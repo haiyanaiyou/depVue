@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简易版vue框架实现</title>
+</head>
+<body>
+    
+</body>
+<script src="./../kvue.js"></script>
+<script>
+    const app = new KVue({
+        data: {
+            test: '123',
+            list: [1,2,3],
+            obj: {
+                name:'1'
+            }
+        }
+    })
+    app.test = '567';
+    app.obj.name = 'hi';
+</script>
+</html>
