@@ -3,8 +3,12 @@ class KVue {
         this.$options = options;
         this.$data = options.data;
         this.observe(this.$data) //响应式
-        new Watcher(this, 'test');
-        this.test;
+        // new Watcher(this, 'test');
+        // this.test;
+        new Compile(options.el, this)
+        if(options.created){
+            options.created.call(this)
+        }
 
     }
     observe(value) {
@@ -67,8 +71,11 @@ class Watcher {
         this.key = key;
         this.cb = cb;
         Dep.target = this;
+        this.vm[this.key];
+        Dep.target = null;
     }
     update() {
-        console.log(`${this.key} 属性更新了`)
+        // console.log(`${this.key} 属性更新了`)
+        this.cb.call(this.vm, this.vm[this.key])
     }
 }

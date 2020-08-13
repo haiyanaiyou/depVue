@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myVue</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <p k-text="name"></p>
+        <p>{{text}}</p>
+        <input type="text" k-model="text" />
+        <div k-html="html"></div>
+        <div>
+            <button @click="testHandler">测试</button>
+        </div>
+    </div>
+</body>
+<script src="./../compile.js"></script>
+<script src="./../kvue.js"></script>
+<script>
+
+    const app = new KVue({
+        el: '#app', 
+        data: { 
+            name: "I am test.", 
+            msg: 'hello',
+            text: '文本输入',
+            html: '<button>html按钮</button>'
+        },
+        created(){
+            console.log('开始啦')
+            setTimeout(()=>{
+                this.text = 'jim'
+            },2000)
+        },
+        methods: {
+            testHandler(){
+                window.alert('测试成功')
+            }
+        }
+    })
+
+
+</script>
+</html>
